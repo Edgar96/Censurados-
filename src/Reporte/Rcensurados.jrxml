@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4d2f27e2-e939-4f60-a1a9-59662bbeaf8b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     medicamentos.`numero` AS medicamentos_numero,
+     medicamentos.`medicamento` AS medicamentos_medicamento,
+     medicamentos.`gramaje` AS medicamentos_gramaje,
+     medicamentos.`cantidad` AS medicamentos_cantidad,
+     medicamentos.`observaciones` AS medicamentos_observaciones
+FROM
+     `medicamentos` medicamentos]]>
+	</queryString>
+	<field name="medicamentos_numero" class="java.lang.Integer"/>
+	<field name="medicamentos_medicamento" class="java.lang.String"/>
+	<field name="medicamentos_gramaje" class="java.lang.String"/>
+	<field name="medicamentos_cantidad" class="java.lang.String"/>
+	<field name="medicamentos_observaciones" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="222" y="0" width="263" height="62" uuid="d440df7d-b49d-4bbe-90b8-4db0314f3910"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Censurados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="248" y="62" width="196" height="22" forecolor="#000000" uuid="e0655e2e-2b07-49b2-80e5-0398f43ab4a6"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Listado De Medicamnetos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="221" height="98" uuid="5c5b57c2-65f5-4d11-96e3-0fae5c77612f"/>
+				<imageExpression><![CDATA["C:\\imageCensurados.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="b296d2ae-2ed5-486b-bc6a-a1b72e0fa9bc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="111" height="15" forecolor="#000000" uuid="c71d8f6f-edff-4df3-8fca-9a1b8196bce0"/>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="111" y="0" width="111" height="15" forecolor="#000000" uuid="ac41e4a3-8879-4fec-9b82-2ab6b70f9427"/>
+				<text><![CDATA[Medicamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="0" width="111" height="15" forecolor="#000000" uuid="4ca3811f-7321-4d23-986b-3eb9c73ce4cb"/>
+				<text><![CDATA[Gramaje]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="0" width="111" height="15" forecolor="#000000" uuid="d71dc146-01b0-4daf-8e56-ed1a161ca516"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="0" width="111" height="15" forecolor="#000000" uuid="55ff8d65-d81d-45c9-b1e1-543af07d19f5"/>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="74fb3006-fd30-4984-b3a8-106bdfe2f4e9"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="111" height="15" uuid="5b2d2b71-ed92-4d63-9767-60da72a5b375"/>
+					<textFieldExpression><![CDATA[$F{medicamentos_numero}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="111" y="0" width="111" height="15" uuid="90124678-14a2-40de-aced-74cd17f0d046"/>
+					<textFieldExpression><![CDATA[$F{medicamentos_medicamento}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="222" y="0" width="111" height="15" uuid="29077fcf-cb70-4ed4-9515-d96441a6e3bd"/>
+					<textFieldExpression><![CDATA[$F{medicamentos_gramaje}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="333" y="0" width="111" height="15" uuid="9fbc3a30-c946-44c0-99e9-649f992de1c5"/>
+					<textFieldExpression><![CDATA[$F{medicamentos_cantidad}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="444" y="0" width="111" height="15" uuid="0c87d00f-9322-4d5e-bcad-dec307c01a0d"/>
+					<textFieldExpression><![CDATA[$F{medicamentos_observaciones}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1bd6a108-bef1-4abe-a72c-3343fd4f064a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#FF3333" backcolor="#FF6666" uuid="d61b5f0b-dff0-4ab2-80b6-36df52e84b08"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="d4d9c3ef-d48b-47ee-9084-918876800723"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="12c2f10b-2a5b-4e2c-811b-8946d8c11b67"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="67486515-e07d-4260-83d3-8af3c9e75dee"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
